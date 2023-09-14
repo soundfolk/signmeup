@@ -1,5 +1,7 @@
 let times = document.getElementById("satra")
 stars = 4
+dine = []
+
 function wrong(ring) {
     let sound = new Audio(ring)
     sound.play()
@@ -17,12 +19,12 @@ function tine() {
         times.innerHTML = ""
         clearInterval(lio)
         games()
-
     }
+
 }
 lio = setInterval(tine, 1000)
 
-
+tip = []
 function games() {
     let count = 100
     let cdown = 3
@@ -33,12 +35,18 @@ function games() {
     let arr = []
     bonus = 0
     game_over = false
-    function counts() {
+    function counts(pins) {
         count -= 1
         if (count >= 0) {
             time = document.getElementById("time").innerHTML = `    Time remaining - ${count}s `
         }
+
         if (count == 0) {
+            pins = Math.random() * 100
+            tip.push(bonus)
+            vv = localStorage.setItem(pins, tip)
+            document.getElementById("pan").innerHTML += `${localStorage.getItem(pins)}`
+
             time = document.getElementById("time").innerHTML = `game over`
             game_over = true
             document.getElementById("dine").innerHTML = `<h1>game over</h1><br><h2>Your Score is ${bonus}</h2>`
@@ -51,10 +59,10 @@ function games() {
 
     function randm() {
 
-        let maths = Math.ceil(Math.random() * 10)
-        let mm = Math.ceil(Math.random() * 10)
-        let num1 = document.getElementById("bib").innerHTML = maths
-        let num2 = document.getElementById("bibs").innerHTML = mm
+        let maths = Math.ceil(Math.random() * 10);
+        let mm = Math.ceil(Math.random() * 10);
+        let num1 = document.getElementById("bib").innerHTML = maths;
+        let num2 = document.getElementById("bibs").innerHTML = mm;
         let sum = num1 + num2
         let sub = num1 - num2
         let mult = num1 * num2
@@ -74,6 +82,7 @@ function games() {
         pip(answer)
 
     }
+
 
     function pip(answer) {
         text = document.getElementById("bit");
@@ -115,39 +124,22 @@ function games() {
 
         switch (event.key) {
             case '1':
-                text.value += 1
-                break
             case '2':
-                text.value += 2
-                break
             case '3':
-                text.value += 3
-                break
             case '4':
-                text.value += 4
-                break
             case '5':
-                text.value += 5
-                break
             case '6':
-                text.value += 6
-                break
             case '7':
-                text.value += 7
-                break
             case '8':
-                text.value += 8
-                break
             case '9':
-                text.value += 9
-                break
             case '0':
-                text.value += 0
+                text.value += event.key;
                 break
             case "Backspace" || keyCode === 8:
                 event.preventDefault();
                 vb = text.value
                 text.value = vb.slice(0, -1)
+                break
         }
 
     }
